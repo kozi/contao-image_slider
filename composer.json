@@ -23,7 +23,7 @@
     },
     "require": {
         "php": ">=5.5",
-        "contao/core": ">=3.4",
+        "contao/core": ">=3.2",
         "contao-community-alliance/composer-plugin": "~2"        
     },
     "autoload": {
