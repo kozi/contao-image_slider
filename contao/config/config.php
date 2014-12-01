@@ -12,4 +12,4 @@
  * @filesource
  */
 
-$GLOBALS['TL_CTE']['']['imagepack_slider'] = 'ContaoImagePack\\Element\\ContentImageSlider';
+$GLOBALS['TL_CTE']['media']['imagepack_slider'] = 'ContaoImagePack\\Element\\ContentImageSlider';
