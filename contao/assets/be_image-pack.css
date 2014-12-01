@@ -1,0 +1,77 @@
+/**
+ * user2group_viewer
+ * @copyright  Martin Kozianka 2011-2014
+ * @author     Martin Kozianka <http://kozianka.de>
+ *
+ */
+ 
+  
+#user2group_viewer {
+	background-color:#ffffff;
+	display:block;
+	margin:10px;
+}
+
+
+#user2group_viewer h2 { font-size:22px; }
+#user2group_viewer h3 { font-size:18px; }
+
+#user2group_viewer li,
+#user2group_viewer ul {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+#user2group_viewer table {
+	width:100%;
+	margin:0;
+	padding:10px 0 0 0;
+	border-collapse: separate;
+    border-spacing:2px 2px;
+}
+
+#user2group_viewer th {
+	background-color:#4F4F4F;
+	color:#fff;
+	text-align:left;
+	padding:5px;
+	margin:1px 1px;
+}
+
+#user2group_viewer td {
+	padding:5px;
+	margin:1px 1px;
+}
+
+#user2group_viewer tr.odd td  { background-color:#eeeeee; }
+#user2group_viewer tr.even td { background-color:#dddddd; }
+
+#user2group_viewer td.name     { width:150px; white-space:nowrap; }
+#user2group_viewer td.username { width:150px; white-space:nowrap; }
+
+#user2group_viewer td.groups {
+	line-height:22px;	
+}
+#user2group_viewer td.groups span {
+	background-color:#CFE0FF;
+	display:inline;
+	white-space:nowrap;
+	margin:1px 2px;
+	padding:2px 4px;
+	color:#333;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+#user2group_viewer td.groups span.admin {
+	background-color:#CF8E8E;	
+}
+
+#user2group_viewer p,
+#user2group_viewer a,
+#user2group_viewer span,
+#user2group_viewer li {
+	font-size:11px;
+}

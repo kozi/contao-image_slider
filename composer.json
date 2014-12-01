@@ -1,0 +1,46 @@
+{
+    "name": "martin-kozianka/image-pack",
+    "description": "A package of image tools and extensions for contao",
+    "keywords": [
+        "contao",
+        "image"
+    ],
+    "type": "contao-module",
+    "license": "LGPL-3.0+",
+    "authors": [
+        {
+            "name": "Martin Kozianka",
+            "email": "martin@kozianka.de",
+            "homepage": "http://kozianka.de",
+            "role": "Developer"
+        }
+    ],  
+    "support": {
+        "email": "martin@kozianka.de",
+        "issues": "https://github.com/kozi/image-pack/issues",
+        "irc": "irc://irc.freenode.org/contao.dev",
+        "source": "https://github.com/kozi/image-pack"
+    },
+    "require": {
+        "php": ">=5.5",
+        "contao/core": ">=3.4",
+        "contao-community-alliance/composer-plugin": "~2"        
+    },
+    "autoload": {
+        "psr-0": {
+            "ContaoImagePack": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "contao": {
+            "sources": {
+                "contao": "system/modules/image-pack"
+            }
+        }
+    },
+    "config": {
+        "component-dir": "../assets/components"
+    }
+}
