@@ -38,6 +38,10 @@ class ContentJssorSlider extends \ContentGallery {
         $sliderConf->bullets    = ($this->jssor_bullets === '1');
         $sliderConf->captions   = ($this->jssor_captions === '1');
 
+
+        var_dump($sliderConf);
+        die();
+
         $path = 'system/modules/jssor-slider/assets/bower_components/ideal-image-slider/';
         $GLOBALS['TL_JAVASCRIPT'][] = $path.'ideal-image-slider.min.js|static';
         $GLOBALS['TL_CSS'][]        = $path.'ideal-image-slider.css||static';
