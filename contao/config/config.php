@@ -7,9 +7,9 @@
  * PHP version 5
  * @copyright Martin Kozianka 2011-2014 <http://kozianka.de/>
  * @author    Martin Kozianka <http://kozianka.de/>
- * @package   image-pack
+ * @package   jssor-slider
  * @license   LGPL
  * @filesource
  */
 
-$GLOBALS['TL_CTE']['media']['imagepack_slider'] = 'ContaoImagePack\\Element\\ContentImageSlider';
+$GLOBALS['TL_CTE']['media']['jssor_slider'] = 'ContaoJssor\\Element\\ContentJssorSlider';

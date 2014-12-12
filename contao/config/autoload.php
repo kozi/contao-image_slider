@@ -7,12 +7,12 @@
  * PHP version 5
  * @copyright Martin Kozianka 2011-2014 <http://kozianka.de/>
  * @author    Martin Kozianka <http://kozianka.de/>
- * @package   image-pack
+ * @package   jssor-slider
  * @license   LGPL
  * @filesource
  */
 
 
 TemplateLoader::addFiles(array(
-    'ce_imageslider_default'      => 'system/modules/image-pack/templates/'
+    'ce_jssor_slider_default'      => 'system/modules/jssor-slider/templates/'
 ));

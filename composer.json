@@ -1,9 +1,13 @@
 {
-    "name": "martin-kozianka/image-pack",
-    "description": "A package of image tools and extensions for contao",
+    "name": "martin-kozianka/jssor-slider",
+    "description": "jssor slider, http://jssor.com for contao",
     "keywords": [
         "contao",
-        "image"
+        "slider",
+        "jssor",
+        "image",
+        "images",
+        "frontend"
     ],
     "type": "contao-module",
     "license": "LGPL-3.0+",
@@ -17,18 +21,18 @@
     ],  
     "support": {
         "email": "martin@kozianka.de",
-        "issues": "https://github.com/kozi/image-pack/issues",
+        "issues": "https://github.com/kozi/jssor-slider/issues",
         "irc": "irc://irc.freenode.org/contao.dev",
-        "source": "https://github.com/kozi/image-pack"
+        "source": "https://github.com/kozi/jssor-slider"
     },
     "require": {
         "php": ">=5.5",
-        "contao/core": ">=3.2",
+        "contao/core": ">=3.4",
         "contao-community-alliance/composer-plugin": "~2"        
     },
     "autoload": {
         "psr-0": {
-            "ContaoImagePack": "src/"
+            "ContaoJssor": "src/"
         }
     },
     "minimum-stability": "dev",
@@ -36,7 +40,7 @@
     "extra": {
         "contao": {
             "sources": {
-                "contao": "system/modules/image-pack"
+                "contao": "system/modules/jssor-slider"
             }
         }
     },
