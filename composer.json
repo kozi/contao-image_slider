@@ -1,10 +1,9 @@
 {
-    "name": "martin-kozianka/jssor-slider",
-    "description": "jssor slider, http://jssor.com for contao",
+    "name": "martin-kozianka/image-slider",
+    "description": "Image slider for contao",
     "keywords": [
         "contao",
         "slider",
-        "jssor",
         "image",
         "images",
         "frontend"
@@ -21,9 +20,9 @@
     ],  
     "support": {
         "email": "martin@kozianka.de",
-        "issues": "https://github.com/kozi/jssor-slider/issues",
+        "issues": "https://github.com/kozi/image-slider/issues",
         "irc": "irc://irc.freenode.org/contao.dev",
-        "source": "https://github.com/kozi/jssor-slider"
+        "source": "https://github.com/kozi/image-slider"
     },
     "require": {
         "php": ">=5.5",
@@ -32,7 +31,7 @@
     },
     "autoload": {
         "psr-0": {
-            "ContaoJssor": "src/"
+            "ContaoImageSlider": "src/"
         }
     },
     "minimum-stability": "dev",
@@ -40,7 +39,7 @@
     "extra": {
         "contao": {
             "sources": {
-                "contao": "system/modules/jssor-slider"
+                "contao": "system/modules/image-slider"
             }
         }
     },
