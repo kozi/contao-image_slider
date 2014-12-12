@@ -84,14 +84,18 @@ class ContentImageSlider extends \ContentGallery {
             $strAttribs        = ($firstImg) ? ' src="'.$arrImage['src'].'"' : '';
             $firstImg          = false;
 
-            if ($this->sliderConf->hidpi) {
-                $arrImage['src2x'] = '';
+            if ($sliderConf->hidpi) {
+                $arrSize[0]       = (2 * $arrSize[0]);
+                $arrSize[1]       = (2 * $arrSize[1]);
+                $arrImage['size'] = serialize($arrSize);
+                $this->addImageToTemplate($objTemp, $arrImage);
 
-                $strAttribs .= ' data...';
+                $arrImage['src-2x'] = $objTemp->src;
+                $strAttribs .= ' src-2x="'.$arrImage['src-2x'].'"';
             }
 
             $arrImage['fullTag'] = sprintf(static::$imgFullTag,
-                // <img data-src="%s" title="%s" alt="%s" %s>
+                // <img data-src="%s" title="%s" alt="%s"%s>
                 $arrImage['src'],
                 $arrImage['caption'],
                 $arrImage['alt'],

@@ -22,7 +22,8 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['multiSRC']['load_callback'][] = func
 
 $GLOBALS['TL_DCA']['tl_content']['palettes']['image_slider'] = str_replace(
   'headline;',
-  'headline;{image_slider_legend},multiSRC,sortBy,size,image_slider_duration, image_slider_effect, image_slider_interval, image_slider_autoslide, image_slider_bullets, image_slider_captions;',
+  'headline;{image_slider_legend},multiSRC,sortBy,size,image_slider_duration, image_slider_effect, image_slider_interval,
+  image_slider_hidpi, image_slider_autoslide, image_slider_bullets, image_slider_captions;',
   $GLOBALS['TL_DCA']['tl_content']['palettes']['headline']);
 
 $GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_duration']  = array(
@@ -47,24 +48,32 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_effect']    = array(
     'eval'                    => array('mandatory'=>true, 'tl_class' => 'w50'),
     'sql'                     => "varchar(255) NOT NULL default ''"
 );
+$GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_hidpi'] = array(
+    'label'                   => &$GLOBALS['TL_LANG']['tl_content']['image_slider_hidpi'],
+    'exclude'                 => true,
+    'inputType'               => 'checkbox',
+    'eval'                    => array('tl_class'=>'w50  m12'),
+    'sql'                     => "char(1) NOT NULL default ''"
+);
+
 $GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_autoslide'] = array(
     'label'                   => &$GLOBALS['TL_LANG']['tl_content']['image_slider_autoslide'],
     'exclude'                 => true,
     'inputType'               => 'checkbox',
-    'eval'                    => array('tl_class'=>'w50 m12'),
+    'eval'                    => array('tl_class'=>'w50'),
     'sql'                     => "char(1) NOT NULL default ''"
 );
 $GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_bullets']   = array(
     'label'                   => &$GLOBALS['TL_LANG']['tl_content']['image_slider_bullets'],
     'exclude'                 => true,
     'inputType'               => 'checkbox',
-    'eval'                    => array('tl_class'=>'w50 m12'),
+    'eval'                    => array('tl_class'=>'w50'),
     'sql'                     => "char(1) NOT NULL default ''"
 );
 $GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_captions']  = array(
     'label'                   => &$GLOBALS['TL_LANG']['tl_content']['image_slider_captions'],
     'exclude'                 => true,
     'inputType'               => 'checkbox',
-    'eval'                    => array('tl_class'=>'w50 m12'),
+    'eval'                    => array('tl_class'=>'w50'),
     'sql'                     => "char(1) NOT NULL default ''"
 );

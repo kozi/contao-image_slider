@@ -16,6 +16,8 @@ $GLOBALS['TL_LANG']['tl_content']['image_slider_effect']            = array('Üb
 $GLOBALS['TL_LANG']['tl_content']['image_slider_autoslide']         = array('Automatischer Wechsel', 'Automatischer Wechsel');
 $GLOBALS['TL_LANG']['tl_content']['image_slider_bullets']           = array('Navigation anzeigen', 'Navigation anzeigen');
 $GLOBALS['TL_LANG']['tl_content']['image_slider_captions']          = array('Titel anzeigen', 'Titel anzeigen');
+$GLOBALS['TL_LANG']['tl_content']['image_slider_hidpi']             = array('HiDPI (Retina) Unterstützung', 'Es werden hochaufgelöste Versionen der Bilder für Geräte mit HiDPI-Displays generiert.');
+
 
 $GLOBALS['TL_LANG']['tl_content']['image_slider_effect']['options'] = array(
     'fade'    => 'Fade-Effekt',
