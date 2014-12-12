@@ -1,19 +1,29 @@
-<div class="ce_image_slider">
-    <h1>image slider</h1>
 
-    <div id="slider<?php echo $this->id; ?>">
-        <?php foreach($this->images as $img): ?>
-            <img data-src="<?php echo $img['singleSRC'];?>" src="" alt="alt alt" title="title title">
-        <?php endforeach; ?>
-    </div>
-    <script>
-        $(function() {
-            var image_slider<?php echo $this->id; ?> = null;
-        });
-    </script>
-    <pre><?php var_dump($this->images); ?></pre>
-    <h2>size</h2>
-    <pre><?php var_dump($this->size); ?></pre>
-    <h2>conf</h2>
-    <pre><?php var_dump($this->sliderConf); ?></pre>
+<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+
+<?php if ($this->headline): ?>
+    <<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+<?php endif; ?>
+
+<div id="<?php echo $this->sliderConf->id; ?>" style="<?php echo $this->sliderConf->sizeCss; ?>">
+    <?php foreach($this->images as $img): ?>
+        <?php echo $img['fullTag']; ?>
+    <?php endforeach; ?>
+</div>
+
+
+<script>
+var image_slider<?php echo $this->id; ?> = new IdealImageSlider.Slider(<?php echo $this->sliderJsConf; ?>);
+<?php if($this->sliderConf->bullets): ?>
+  image_slider<?php echo $this->id; ?>.addBulletNav();
+<?php endif; ?>
+<?php if($this->sliderConf->captions): ?>
+  image_slider<?php echo $this->id; ?>.addCaptions();
+<?php endif; ?>
+<?php if($this->sliderConf->autoslide): ?>
+  image_slider<?php echo $this->id; ?>.start();
+<?php endif; ?>
+</script>
+
+
 </div>

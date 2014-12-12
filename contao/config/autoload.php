@@ -12,7 +12,7 @@
  * @filesource
  */
 
-
 TemplateLoader::addFiles(array(
+    'be_image_slider'              => 'system/modules/image-slider/templates/',
     'ce_image_slider_default'      => 'system/modules/image-slider/templates/'
 ));

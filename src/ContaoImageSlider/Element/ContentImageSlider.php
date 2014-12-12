@@ -25,37 +25,82 @@ namespace ContaoImageSlider\Element;
  */
 
 class ContentImageSlider extends \ContentGallery {
-
+    private static $imgFullTag = "<img data-src=\"%s\" alt=\"%s\" title=\"%s\" %s>\n";
     protected $strTemplate = 'ce_image_slider_default';
-
 
     protected function compile() {
         global $objPage;
 
-        $sliderConf             = new \stdClass();
-        $sliderConf->duration   = intval($this->image_slider_duration);
-        $sliderConf->interval   = intval($this->image_slider_interval);
-        $sliderConf->effect     = $this->image_slider_effect;
-        $sliderConf->autoslide  = ($this->image_slider_autoslide === '1');
-        $sliderConf->bullets    = ($this->image_slider_bullets === '1');
-        $sliderConf->captions   = ($this->image_slider_captions === '1');
+        if (TL_MODE === 'BE') {
+            $this->Template = new \BackendTemplate('be_image_slider');
+        }
+
+        $arrSize               = deserialize($this->size);
+        $sliderConf            = new \stdClass();
+        $sliderConf->id        = 'slider'.$this->id;
+        $sliderConf->selector  = '#'.$sliderConf->id;
+        $sliderConf->effect    = $this->image_slider_effect;
+
+        $sliderConf->width     = intval($arrSize[0]);
+        $sliderConf->height    = intval($arrSize[1]);
+        $sliderConf->sizeCss   = 'width:'.$sliderConf->width.'px;height:'.$sliderConf->height.'px;';
+
+        $sliderConf->interval           = intval($this->image_slider_interval);
+        $sliderConf->transitionDuration = intval($this->image_slider_duration);
+
+
+        $sliderConf->autoslide = ($this->image_slider_autoslide === '1');
+        $sliderConf->bullets   = ($this->image_slider_bullets === '1');
+        $sliderConf->captions  = ($this->image_slider_captions === '1');
+        $sliderConf->hidpi     = ($this->image_slider_hidpi === '1');
 
         $path = 'system/modules/image-slider/assets/bower_components/ideal-image-slider/';
         $GLOBALS['TL_JAVASCRIPT'][] = $path.'ideal-image-slider.min.js|static';
         $GLOBALS['TL_CSS'][]        = $path.'ideal-image-slider.css||static';
         $GLOBALS['TL_CSS'][]        = $path.'themes/default/default.css||static';
 
-        $arrSize          = deserialize($this->size);
-        $sizeConf         = new \stdClass();
-        $sizeConf->width  = intval($arrSize[0]);
-        $sizeConf->height = intval($arrSize[1]);
-        $sizeConf->type   = $arrSize[2];
+        if ($sliderConf->bullets) {
+            $GLOBALS['TL_JAVASCRIPT'][] = $path.'extensions/bullet-nav/iis-bullet-nav.js|static';
+        }
+        if ($sliderConf->captions) {
+            $GLOBALS['TL_JAVASCRIPT'][] = $path.'extensions/captions/iis-captions.js|static';
+        }
 
+        $sliderJsConf = new \stdClass();
+        foreach(['selector', 'interval', 'transitionDuration', 'effect', 'height'] as $property) {
+            $sliderJsConf->$property = $sliderConf->$property;
+        }
 
-        $this->Template->sliderConf  = $sliderConf;
-        $this->Template->size        = $sizeConf;
-        $this->Template->images      = $this->getAllImages();
+        $arrImages = $this->getAllImages();
+        $firstImg  = true;
+        $objTemp   = new \stdClass();
 
+        foreach ($arrImages as &$arrImage) {
+
+            $arrImage['size'] = $this->size;
+            $this->addImageToTemplate($objTemp, $arrImage);
+
+            $arrImage['src']   = $objTemp->src;
+            $strAttribs        = ($firstImg) ? ' src="'.$arrImage['src'].'"' : '';
+            $firstImg          = false;
+
+            if ($this->sliderConf->hidpi) {
+                $arrImage['src2x'] = '';
+
+                $strAttribs .= ' data...';
+            }
+
+            $arrImage['fullTag'] = sprintf(static::$imgFullTag,
+                // <img data-src="%s" title="%s" alt="%s" %s>
+                $arrImage['src'],
+                $arrImage['caption'],
+                $arrImage['alt'],
+                $strAttribs
+            );
+        }
+        $this->Template->sliderConf   = $sliderConf;
+        $this->Template->sliderJsConf = json_encode($sliderJsConf);
+        $this->Template->images       = $arrImages;
 
     }
 
@@ -217,4 +262,5 @@ class ContentImageSlider extends \ContentGallery {
         }
         return array_values($images);
     }
+
 }

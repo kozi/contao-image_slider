@@ -1,0 +1,14 @@
+
+<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+
+<?php if ($this->headline): ?>
+    <<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+<?php endif; ?>
+
+<div id="<?php echo $this->sliderConf->id; ?>">
+    <?php foreach($this->images as $img): ?>
+        <img src="<?php echo TL_FILES_URL.\Image::get($img['singleSRC'], 0, 120, 'proportional');?>">
+    <?php endforeach; ?>
+</div>
+
+</div>
