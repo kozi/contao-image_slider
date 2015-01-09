@@ -35,41 +35,29 @@ class ContentImageSlider extends \ContentGallery {
             $this->Template = new \BackendTemplate('be_image_slider');
         }
 
-        $arrSize               = deserialize($this->size);
+        $arrSize = deserialize($this->size);
+
+        if (is_array($arrSize) && !empty($arrSize[2]) && is_numeric($arrSize[2]))
+        {
+            $size = (int) $arrSize[2];
+            if (($imageSize = \ImageSizeModel::findByPk($size)) !== null) {
+                $arrSize = array($imageSize->width, $imageSize->height, $imageSize->resizeMode);
+            }
+        }
+
         $sliderConf            = new \stdClass();
         $sliderConf->id        = 'slider'.$this->id;
         $sliderConf->selector  = '#'.$sliderConf->id;
         $sliderConf->effect    = $this->image_slider_effect;
-
-        $sliderConf->width     = intval($arrSize[0]);
-        $sliderConf->height    = intval($arrSize[1]);
-        $sliderConf->sizeCss   = 'width:'.$sliderConf->width.'px;height:'.$sliderConf->height.'px;';
-
-        $sliderConf->interval           = intval($this->image_slider_interval);
-        $sliderConf->transitionDuration = intval($this->image_slider_duration);
-
 
         $sliderConf->autoslide = ($this->image_slider_autoslide === '1');
         $sliderConf->bullets   = ($this->image_slider_bullets === '1');
         $sliderConf->captions  = ($this->image_slider_captions === '1');
         $sliderConf->hidpi     = ($this->image_slider_hidpi === '1');
 
-        $path = 'system/modules/image-slider/assets/bower_components/ideal-image-slider/';
-        $GLOBALS['TL_JAVASCRIPT'][] = $path.'ideal-image-slider.min.js|static';
-        $GLOBALS['TL_CSS'][]        = $path.'ideal-image-slider.css||static';
-        $GLOBALS['TL_CSS'][]        = $path.'themes/default/default.css||static';
+        $sliderConf->interval           = intval($this->image_slider_interval);
+        $sliderConf->transitionDuration = intval($this->image_slider_duration);
 
-        if ($sliderConf->bullets) {
-            $GLOBALS['TL_JAVASCRIPT'][] = $path.'extensions/bullet-nav/iis-bullet-nav.js|static';
-        }
-        if ($sliderConf->captions) {
-            $GLOBALS['TL_JAVASCRIPT'][] = $path.'extensions/captions/iis-captions.js|static';
-        }
-
-        $sliderJsConf = new \stdClass();
-        foreach(['selector', 'interval', 'transitionDuration', 'effect', 'height'] as $property) {
-            $sliderJsConf->$property = $sliderConf->$property;
-        }
 
         $arrImages = $this->getAllImages();
         $firstImg  = true;
@@ -80,14 +68,21 @@ class ContentImageSlider extends \ContentGallery {
             $arrImage['size'] = $this->size;
             $this->addImageToTemplate($objTemp, $arrImage);
 
-            $arrImage['src']   = $objTemp->src;
-            $strAttribs        = ($firstImg) ? ' src="'.$arrImage['src'].'"' : '';
-            $firstImg          = false;
+            $arrImage['src'] = $objTemp->src;
+            $strAttribs      = '';
+
+            if ($firstImg) {
+                $strAttribs = ' src="'.$arrImage['src'].'"';
+
+                // Die Größenangaben merken
+                $arrSizeFirstImg = array($objTemp->arrSize[0], $objTemp->arrSize[1]);
+            }
+            $firstImg = false;
 
             if ($sliderConf->hidpi) {
-                $arrSize[0]       = (2 * $arrSize[0]);
-                $arrSize[1]       = (2 * $arrSize[1]);
-                $arrImage['size'] = serialize($arrSize);
+                // Bildgrößen auslesen
+                $hidpiSize        = array( (2 * $arrSize[0]), (2 * $arrSize[1]), $arrSize[2]             );
+                $arrImage['size'] = serialize($hidpiSize);
                 $this->addImageToTemplate($objTemp, $arrImage);
 
                 $arrImage['src-2x'] = $objTemp->src;
@@ -102,6 +97,29 @@ class ContentImageSlider extends \ContentGallery {
                 $strAttribs
             );
         }
+        var_dump($arrSize);
+        $sliderConf->width     = (intval($arrSize[0]) != 0) ?intval($arrSize[0]) : $arrSizeFirstImg[0];
+        $sliderConf->height    = (intval($arrSize[1]) != 0) ?intval($arrSize[1]) : $arrSizeFirstImg[1];
+        $sliderConf->sizeCss   = 'width:'.$sliderConf->width.'px;';//height:'.$sliderConf->height.'px;';
+
+
+        $sliderJsConf = new \stdClass();
+        foreach(['selector', 'interval', 'transitionDuration', 'effect', 'height'] as $property) {
+            $sliderJsConf->$property = $sliderConf->$property;
+        }
+
+        $path = 'system/modules/image-slider/assets/bower_components/ideal-image-slider/';
+        $GLOBALS['TL_JAVASCRIPT'][] = $path.'ideal-image-slider.min.js|static';
+        $GLOBALS['TL_CSS'][]        = $path.'ideal-image-slider.css||static';
+        $GLOBALS['TL_CSS'][]        = $path.'themes/default/default.css||static';
+
+        if ($sliderConf->bullets) {
+            $GLOBALS['TL_JAVASCRIPT'][] = $path.'extensions/bullet-nav/iis-bullet-nav.js|static';
+        }
+        if ($sliderConf->captions) {
+            $GLOBALS['TL_JAVASCRIPT'][] = $path.'extensions/captions/iis-captions.js|static';
+        }
+
         $this->Template->sliderConf   = $sliderConf;
         $this->Template->sliderJsConf = json_encode($sliderJsConf);
         $this->Template->images       = $arrImages;
