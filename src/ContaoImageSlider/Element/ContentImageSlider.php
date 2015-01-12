@@ -97,7 +97,8 @@ class ContentImageSlider extends \ContentGallery {
                 $strAttribs
             );
         }
-        var_dump($arrSize);
+
+
         $sliderConf->width     = (intval($arrSize[0]) != 0) ?intval($arrSize[0]) : $arrSizeFirstImg[0];
         $sliderConf->height    = (intval($arrSize[1]) != 0) ?intval($arrSize[1]) : $arrSizeFirstImg[1];
         $sliderConf->sizeCss   = 'width:'.$sliderConf->width.'px;';//height:'.$sliderConf->height.'px;';

@@ -24,12 +24,6 @@
         "irc": "irc://irc.freenode.org/contao.dev",
         "source": "https://github.com/kozi/image-slider"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/contao/core"
-        }
-    ],
     "require": {
         "php": ">=5.5",
         "contao/core": ">=3.4",
