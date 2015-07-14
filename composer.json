@@ -1,5 +1,5 @@
 {
-    "name": "martin-kozianka/image-slider",
+    "name": "martin-kozianka/contao-image_slider",
     "description": "Image slider for contao",
     "keywords": [
         "contao",
@@ -20,9 +20,9 @@
     ],  
     "support": {
         "email": "martin@kozianka.de",
-        "issues": "https://github.com/kozi/image-slider/issues",
+        "issues": "https://github.com/kozi/contao-image_slider/issues",
         "irc": "irc://irc.freenode.org/contao.dev",
-        "source": "https://github.com/kozi/image-slider"
+        "source": "https://github.com/kozi/contao-image_slider"
     },
     "require": {
         "php": ">=5.5",
@@ -39,7 +39,7 @@
     "extra": {
         "contao": {
             "sources": {
-                "contao": "system/modules/image-slider"
+                "contao": "system/modules/image_slider"
             }
         }
     },
