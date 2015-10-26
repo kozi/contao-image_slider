@@ -2,11 +2,11 @@
 
 /**
  * Contao Open Source CMS
- * Copyright (C) 2005-2014 Leo Feyer
+ * Copyright (C) 2005-2015 Leo Feyer
  *
  *
  * PHP version 5
- * @copyright  Martin Kozianka 2014 <http://kozianka.de/>
+ * @copyright  Martin Kozianka 2015 <http://kozianka.de/>
  * @author     Martin Kozianka <http://kozianka.de/>
  * @package    image-slider
  * @license    LGPL
@@ -24,14 +24,17 @@ namespace ContaoImageSlider\Element;
  * @package    image-slider
  */
 
-class ContentImageSlider extends \ContentGallery {
+class ContentImageSlider extends \ContentGallery
+{
     private static $imgFullTag = "<img data-src=\"%s\" alt=\"%s\" title=\"%s\" %s>\n";
     protected $strTemplate = 'ce_image_slider_default';
 
-    protected function compile() {
+    protected function compile()
+    {
         global $objPage;
 
-        if (TL_MODE === 'BE') {
+        if (TL_MODE === 'BE')
+        {
             $this->Template = new \BackendTemplate('be_image_slider');
         }
 
@@ -40,8 +43,9 @@ class ContentImageSlider extends \ContentGallery {
         if (is_array($arrSize) && !empty($arrSize[2]) && is_numeric($arrSize[2]))
         {
             $size = (int) $arrSize[2];
-            if (($imageSize = \ImageSizeModel::findByPk($size)) !== null) {
-                $arrSize = array($imageSize->width, $imageSize->height, $imageSize->resizeMode);
+            if (($imageSize = \ImageSizeModel::findByPk($size)) !== null)
+            {
+                $arrSize = [$imageSize->width, $imageSize->height, $imageSize->resizeMode];
             }
         }
 
@@ -63,15 +67,16 @@ class ContentImageSlider extends \ContentGallery {
         $firstImg  = true;
         $objTemp   = new \stdClass();
 
-        foreach ($arrImages as &$arrImage) {
-
+        foreach ($arrImages as &$arrImage)
+        {
             $arrImage['size'] = $this->size;
             $this->addImageToTemplate($objTemp, $arrImage);
 
             $arrImage['src'] = $objTemp->src;
             $strAttribs      = '';
 
-            if ($firstImg) {
+            if ($firstImg)
+            {
                 $strAttribs = ' src="'.$arrImage['src'].'"';
 
                 // Die Größenangaben merken
@@ -79,9 +84,10 @@ class ContentImageSlider extends \ContentGallery {
             }
             $firstImg = false;
 
-            if ($sliderConf->hidpi) {
+            if ($sliderConf->hidpi)
+            {
                 // Bildgrößen auslesen
-                $hidpiSize        = array( (2 * $arrSize[0]), (2 * $arrSize[1]), $arrSize[2]             );
+                $hidpiSize        = [(2 * $arrSize[0]), (2 * $arrSize[1]), $arrSize[2]];
                 $arrImage['size'] = serialize($hidpiSize);
                 $this->addImageToTemplate($objTemp, $arrImage);
 
@@ -105,19 +111,22 @@ class ContentImageSlider extends \ContentGallery {
 
 
         $sliderJsConf = new \stdClass();
-        foreach(['selector', 'interval', 'transitionDuration', 'effect', 'height'] as $property) {
+        foreach(['selector', 'interval', 'transitionDuration', 'effect', 'height'] as $property)
+        {
             $sliderJsConf->$property = $sliderConf->$property;
         }
 
-        $path = 'system/modules/image-slider/assets/bower_components/ideal-image-slider/';
+        $path = 'system/modules/image-slider/assets/ideal-image-slider/';
         $GLOBALS['TL_JAVASCRIPT'][] = $path.'ideal-image-slider.min.js|static';
         $GLOBALS['TL_CSS'][]        = $path.'ideal-image-slider.css||static';
         $GLOBALS['TL_CSS'][]        = $path.'themes/default/default.css||static';
 
-        if ($sliderConf->bullets) {
+        if ($sliderConf->bullets)
+        {
             $GLOBALS['TL_JAVASCRIPT'][] = $path.'extensions/bullet-nav/iis-bullet-nav.js|static';
         }
-        if ($sliderConf->captions) {
+        if ($sliderConf->captions)
+        {
             $GLOBALS['TL_JAVASCRIPT'][] = $path.'extensions/captions/iis-captions.js|static';
         }
 
@@ -127,10 +136,11 @@ class ContentImageSlider extends \ContentGallery {
 
     }
 
-    private function getAllImages() {
+    private function getAllImages()
+    {
         global $objPage;
-        $images   = array();
-        $auxDate  = array();
+        $images   = [];
+        $auxDate  = [];
         $objFiles = $this->objFiles;
 
         // Get all images
@@ -161,8 +171,7 @@ class ContentImageSlider extends \ContentGallery {
                 }
 
                 // Add the image
-                $images[$objFiles->path] = array
-                (
+                $images[$objFiles->path] = [
                     'id'        => $objFiles->id,
                     'uuid'      => $objFiles->uuid,
                     'name'      => $objFile->basename,
@@ -170,7 +179,7 @@ class ContentImageSlider extends \ContentGallery {
                     'alt'       => $arrMeta['title'],
                     'imageUrl'  => $arrMeta['link'],
                     'caption'   => $arrMeta['caption']
-                );
+                ];
 
                 $auxDate[] = $objFile->mtime;
             }
@@ -209,8 +218,7 @@ class ContentImageSlider extends \ContentGallery {
                     }
 
                     // Add the image
-                    $images[$objSubfiles->path] = array
-                    (
+                    $images[$objSubfiles->path] = [
                         'id'        => $objSubfiles->id,
                         'uuid'      => $objSubfiles->uuid,
                         'name'      => $objFile->basename,
@@ -218,7 +226,7 @@ class ContentImageSlider extends \ContentGallery {
                         'alt'       => $arrMeta['title'],
                         'imageUrl'  => $arrMeta['link'],
                         'caption'   => $arrMeta['caption']
-                    );
+                    ];
 
                     $auxDate[] = $objFile->mtime;
                 }
