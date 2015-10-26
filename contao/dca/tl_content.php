@@ -7,7 +7,7 @@
  * @copyright Martin Kozianka 2011-2015 <http://kozianka.de/>
  * @author    Martin Kozianka <http://kozianka.de/>
  * @license   http://www.gnu.org/licenses/lgpl-3.0.html LGPL
- * @package   image-slider
+ * @package   image_slider
  */
 
 

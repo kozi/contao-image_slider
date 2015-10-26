@@ -8,7 +8,7 @@
  * PHP version 5
  * @copyright  Martin Kozianka 2015 <http://kozianka.de/>
  * @author     Martin Kozianka <http://kozianka.de/>
- * @package    image-slider
+ * @package    image_slider
  * @license    LGPL
  * @filesource
  */
@@ -21,7 +21,7 @@ namespace ContaoImageSlider\Element;
  * Front end content element "ContentImageSlider".
  * @copyright  Martin Kozianka 2014
  * @author     Martin Kozianka <martin@kozianka.de>
- * @package    image-slider
+ * @package    image_slider
  */
 
 class ContentImageSlider extends \ContentGallery
@@ -116,7 +116,7 @@ class ContentImageSlider extends \ContentGallery
             $sliderJsConf->$property = $sliderConf->$property;
         }
 
-        $path = 'system/modules/image-slider/assets/ideal-image-slider/';
+        $path = 'system/modules/image_slider/assets/ideal-image-slider/';
         $GLOBALS['TL_JAVASCRIPT'][] = $path.'ideal-image-slider.min.js|static';
         $GLOBALS['TL_CSS'][]        = $path.'ideal-image-slider.css||static';
         $GLOBALS['TL_CSS'][]        = $path.'themes/default/default.css||static';

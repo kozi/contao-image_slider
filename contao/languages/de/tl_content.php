@@ -1,15 +1,5 @@
 <?php
 
-/**
- * Contao Open Source CMS
- * Copyright (C) 2005-2015 Leo Feyer
- *
- * @copyright Martin Kozianka 2011-2015 <http://kozianka.de/>
- * @author    Martin Kozianka <http://kozianka.de/>
- * @license   http://www.gnu.org/licenses/lgpl-3.0.html LGPL
- * @package   image-slider
- */
-
 $GLOBALS['TL_LANG']['tl_content']['image_slider_legend']            = 'Slider';
 $GLOBALS['TL_LANG']['tl_content']['image_slider_interval']          = ['Dauer der Anzeige', 'Dauer der Anzeige (in ms)'];
 $GLOBALS['TL_LANG']['tl_content']['image_slider_duration']          = ['Dauer der Überblendung', 'Dauer der Überblendung (in ms)'];
