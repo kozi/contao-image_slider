@@ -19,10 +19,9 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['multiSRC']['load_callback'][] = func
     return $varValue;
 };
 
-
 $GLOBALS['TL_DCA']['tl_content']['palettes']['image_slider'] = str_replace(
   'headline;',
-  'headline;{image_slider_legend},multiSRC,sortBy,size,image_slider_duration, image_slider_effect, image_slider_interval,
+  'headline;{image_slider_legend},multiSRC,sortBy,size, image_slider_height, image_slider_effect, image_slider_interval, image_slider_duration,
   image_slider_hidpi, image_slider_autoslide, image_slider_bullets, image_slider_captions;',
   $GLOBALS['TL_DCA']['tl_content']['palettes']['headline']);
 
@@ -40,7 +39,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_interval']  = [
     'eval'                    => ['rgxp'=>'digit', 'tl_class'=>'w50'],
     'sql'                     => "smallint(5) unsigned NOT NULL default '4000'"
 ];
-$GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_effect']    = [
+$GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_effect'] = [
     'label'                   => &$GLOBALS['TL_LANG']['tl_content']['image_slider_effect'],
     'exclude'                 => true,
     'inputType'               => 'select',
@@ -48,6 +47,15 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_effect']    = [
     'eval'                    => ['mandatory'=>true, 'tl_class' => 'w50'],
     'sql'                     => "varchar(255) NOT NULL default ''"
 ];
+$GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_height'] = [
+    'label'                   => &$GLOBALS['TL_LANG']['tl_content']['image_slider_height'],
+    'default'                 => 'auto',
+    'exclude'                 => true,
+    'inputType'               => 'text',
+    'eval'                    => ['mandatory'=>true, 'tl_class' => 'w50'],
+    'sql'                     => "varchar(255) NOT NULL default ''"
+];
+
 $GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_hidpi'] = [
     'label'                   => &$GLOBALS['TL_LANG']['tl_content']['image_slider_hidpi'],
     'exclude'                 => true,

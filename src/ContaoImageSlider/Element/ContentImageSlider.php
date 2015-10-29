@@ -45,15 +45,16 @@ class ContentImageSlider extends \ContentGallery
             }
         }
 
-        $sliderConf            = new \stdClass();
-        $sliderConf->id        = 'slider'.$this->id;
-        $sliderConf->selector  = '#'.$sliderConf->id;
-        $sliderConf->effect    = $this->image_slider_effect;
+        $sliderConf               = new \stdClass();
+        $sliderConf->id           = 'slider'.$this->id;
+        $sliderConf->selector     = '#'.$sliderConf->id;
+        $sliderConf->sliderHeight = $this->image_slider_height;
+        $sliderConf->effect       = $this->image_slider_effect;
 
-        $sliderConf->autoslide = ($this->image_slider_autoslide === '1');
-        $sliderConf->bullets   = ($this->image_slider_bullets === '1');
-        $sliderConf->captions  = ($this->image_slider_captions === '1');
-        $sliderConf->hidpi     = ($this->image_slider_hidpi === '1');
+        $sliderConf->autoslide    = ('1' === $this->image_slider_autoslide);
+        $sliderConf->bullets      = ('1' === $this->image_slider_bullets);
+        $sliderConf->captions     = ('1' === $this->image_slider_captions);
+        $sliderConf->hidpi        = ('1' === $this->image_slider_hidpi);
 
         $sliderConf->interval           = intval($this->image_slider_interval);
         $sliderConf->transitionDuration = intval($this->image_slider_duration);
@@ -100,17 +101,16 @@ class ContentImageSlider extends \ContentGallery
             );
         }
 
+        $sliderConf->width  = (intval($arrSize[0]) != 0) ?intval($arrSize[0]) : $arrSizeFirstImg[0];
+        $sliderConf->height = (intval($arrSize[1]) != 0) ?intval($arrSize[1]) : $arrSizeFirstImg[1];
 
-        $sliderConf->width     = (intval($arrSize[0]) != 0) ?intval($arrSize[0]) : $arrSizeFirstImg[0];
-        $sliderConf->height    = (intval($arrSize[1]) != 0) ?intval($arrSize[1]) : $arrSizeFirstImg[1];
-        $sliderConf->sizeCss   = 'width:'.$sliderConf->width.'px;';//height:'.$sliderConf->height.'px;';
-
-
-        $sliderJsConf = new \stdClass();
-        foreach(['selector', 'interval', 'transitionDuration', 'effect', 'height'] as $property)
-        {
-            $sliderJsConf->$property = $sliderConf->$property;
-        }
+        $sliderJsConf = (Object) [
+            'selector'           => $sliderConf->selector,
+            'interval'           => $sliderConf->interval,
+            'transitionDuration' => $sliderConf->transitionDuration,
+            'effect'             => $sliderConf->effect,
+            'height'             => $sliderConf->sliderHeight
+        ];
 
         $path = 'system/modules/image_slider/assets/ideal-image-slider/';
         $GLOBALS['TL_JAVASCRIPT'][] = $path.'ideal-image-slider.min.js|static';

@@ -3,6 +3,7 @@
 $GLOBALS['TL_LANG']['tl_content']['image_slider_legend']            = 'Slider';
 $GLOBALS['TL_LANG']['tl_content']['image_slider_interval']          = ['Dauer der Anzeige', 'Dauer der Anzeige (in ms)'];
 $GLOBALS['TL_LANG']['tl_content']['image_slider_duration']          = ['Dauer der Überblendung', 'Dauer der Überblendung (in ms)'];
+$GLOBALS['TL_LANG']['tl_content']['image_slider_height']            = ['Höhe des Sliders', 'Mögliche Werte sind: auto, Pixelangabe oder ein Seitenverhältnis (z.B.: 16:9)'];
 $GLOBALS['TL_LANG']['tl_content']['image_slider_effect']            = ['Übergangseffekt', 'Übergangseffekt'];
 $GLOBALS['TL_LANG']['tl_content']['image_slider_autoslide']         = ['Automatischer Wechsel', 'Automatischer Wechsel'];
 $GLOBALS['TL_LANG']['tl_content']['image_slider_bullets']           = ['Navigation anzeigen', 'Navigation anzeigen'];

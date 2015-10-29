@@ -34,5 +34,5 @@ class ImageSlider
         ];
         return $arrOptions;
     }
-
+    
 }

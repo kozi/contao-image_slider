@@ -7,7 +7,7 @@
 
 <div id="<?=$this->sliderConf->id?>">
     <?php foreach($this->images as $img): ?>
-        <img src="<?=TL_FILES_URL.\Image::get($img['singleSRC'], 160, 100, 'center_center')?>">
+        <img src="<?=TL_FILES_URL.\Image::get($img['singleSRC'], 80, 50, 'center_center')?>">
     <?php endforeach; ?>
 </div>
 
