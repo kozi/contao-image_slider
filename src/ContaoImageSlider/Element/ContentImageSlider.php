@@ -1,25 +1,23 @@
-<?php
+<?php namespace ContaoImageSlider\Element;
 
-/**
- * Contao Open Source CMS
- * Copyright (C) 2005-2015 Leo Feyer
- *
- *
- * PHP version 5
- * @copyright  Martin Kozianka 2015 <http://kozianka.de/>
- * @author     Martin Kozianka <http://kozianka.de/>
- * @package    image_slider
- * @license    LGPL
- * @filesource
- */
-
-namespace ContaoImageSlider\Element;
+    /**
+     * Contao Open Source CMS
+     * Copyright (C) 2005-2015 Leo Feyer
+     *
+     *
+     * PHP version 5
+     * @copyright  Martin Kozianka 2015 <http://kozianka.de/>
+     * @author     Martin Kozianka <http://kozianka.de/>
+     * @package    image_slider
+     * @license    LGPL
+     * @filesource
+     */
 
 /**
  * Class ContentImageSlider
  *
  * Front end content element "ContentImageSlider".
- * @copyright  Martin Kozianka 2014
+ * @copyright  Martin Kozianka 2015
  * @author     Martin Kozianka <martin@kozianka.de>
  * @package    image_slider
  */
@@ -31,8 +29,6 @@ class ContentImageSlider extends \ContentGallery
 
     protected function compile()
     {
-        global $objPage;
-
         if (TL_MODE === 'BE')
         {
             $this->Template = new \BackendTemplate('be_image_slider');

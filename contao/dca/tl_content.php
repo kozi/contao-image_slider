@@ -4,7 +4,7 @@
  * Contao Open Source CMS
  * Copyright (C) 2005-2015 Leo Feyer
  *
- * @copyright Martin Kozianka 2011-2015 <http://kozianka.de/>
+ * @copyright Martin Kozianka 2015 <http://kozianka.de/>
  * @author    Martin Kozianka <http://kozianka.de/>
  * @license   http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  * @package   image_slider
@@ -44,7 +44,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_effect']    = [
     'label'                   => &$GLOBALS['TL_LANG']['tl_content']['image_slider_effect'],
     'exclude'                 => true,
     'inputType'               => 'select',
-    'options'                 => &$GLOBALS['TL_LANG']['tl_content']['image_slider_effect']['options'],
+    'options'                 => ImageSlider::effectOptions(),
     'eval'                    => ['mandatory'=>true, 'tl_class' => 'w50'],
     'sql'                     => "varchar(255) NOT NULL default ''"
 ];

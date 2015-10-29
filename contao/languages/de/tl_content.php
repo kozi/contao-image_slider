@@ -9,7 +9,6 @@ $GLOBALS['TL_LANG']['tl_content']['image_slider_bullets']           = ['Navigati
 $GLOBALS['TL_LANG']['tl_content']['image_slider_captions']          = ['Titel anzeigen', 'Titel anzeigen'];
 $GLOBALS['TL_LANG']['tl_content']['image_slider_hidpi']             = ['HiDPI (Retina) Unterstützung', 'Es werden hochaufgelöste Versionen der Bilder für Geräte mit HiDPI-Displays generiert.'];
 
-
 $GLOBALS['TL_LANG']['tl_content']['image_slider_effect']['options'] = [
     'fade'    => 'Fade-Effekt',
     'slide'   => 'Slide-Effekt',

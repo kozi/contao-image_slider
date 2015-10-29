@@ -31,7 +31,7 @@
     },
     "require-dev": {
         "fxp/composer-asset-plugin": "~1",
-        "bower-asset/ideal-image-slider": "~1.5"
+        "bower-asset/ideal-image-slider": "~1"
     },    
     "autoload": {
         "psr-0": {
