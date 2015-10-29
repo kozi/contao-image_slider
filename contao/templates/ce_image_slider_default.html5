@@ -1,29 +1,26 @@
-
-<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+<div class="<?=$this->class?> block"<?=$this->cssID?><?php if ($this->style): ?> style="<?=$this->style?>"<?php endif; ?>>
 
 <?php if ($this->headline): ?>
-    <<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+    <<?=$this->hl?>><?=$this->headline?></<?=$this->hl?>>
 <?php endif; ?>
 
-<div id="<?php echo $this->sliderConf->id; ?>" style="<?php echo $this->sliderConf->sizeCss; ?>">
+<div id="<?=$this->sliderConf->id?>">
     <?php foreach($this->images as $img): ?>
-        <?php echo $img['fullTag']; ?>
+        <?=$img['fullTag']?>
     <?php endforeach; ?>
 </div>
 
-
 <script>
-var image_slider<?php echo $this->id; ?> = new IdealImageSlider.Slider(<?php echo $this->sliderJsConf; ?>);
+  var image_slider<?=$this->id?> = new IdealImageSlider.Slider(<?=$this->sliderJsConf?>);
 <?php if($this->sliderConf->bullets): ?>
-  image_slider<?php echo $this->id; ?>.addBulletNav();
+  image_slider<?=$this->id?>.addBulletNav();
 <?php endif; ?>
 <?php if($this->sliderConf->captions): ?>
-  image_slider<?php echo $this->id; ?>.addCaptions();
+  image_slider<?=$this->id?>.addCaptions();
 <?php endif; ?>
 <?php if($this->sliderConf->autoslide): ?>
-  image_slider<?php echo $this->id; ?>.start();
+  image_slider<?=$this->id?>.start();
 <?php endif; ?>
 </script>
-
 
 </div>
