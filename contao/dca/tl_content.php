@@ -60,7 +60,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_hidpi'] = [
     'label'                   => &$GLOBALS['TL_LANG']['tl_content']['image_slider_hidpi'],
     'exclude'                 => true,
     'inputType'               => 'checkbox',
-    'eval'                    => ['tl_class'=>'w50  m12'],
+    'eval'                    => ['tl_class'=>'w50'],
     'sql'                     => "char(1) NOT NULL default ''"
 ];
 $GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_autoslide'] = [
