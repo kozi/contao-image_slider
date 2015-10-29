@@ -44,7 +44,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields']['image_slider_effect']    = [
     'label'                   => &$GLOBALS['TL_LANG']['tl_content']['image_slider_effect'],
     'exclude'                 => true,
     'inputType'               => 'select',
-    'options'                 => ImageSlider::effectOptions(),
+    'options'                 => \ContaoImageSlider\ImageSlider::effectOptions(),
     'eval'                    => ['mandatory'=>true, 'tl_class' => 'w50'],
     'sql'                     => "varchar(255) NOT NULL default ''"
 ];
