@@ -42,7 +42,7 @@
     "prefer-stable": true,
     "extra": {
         "asset-installer-paths": {
-            "bower-asset-library": "contao/assets/"
+            "bower-asset-library": "contao/assets"
         },        
         "contao": {
             "sources": {

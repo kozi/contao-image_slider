@@ -1,27 +1,26 @@
 <?php namespace ContaoImageSlider\Element;
 
-    /**
-     * Contao Open Source CMS
-     * Copyright (C) 2005-2015 Leo Feyer
-     *
-     *
-     * PHP version 5
-     * @copyright  Martin Kozianka 2015 <http://kozianka.de/>
-     * @author     Martin Kozianka <http://kozianka.de/>
-     * @package    image_slider
-     * @license    LGPL
-     * @filesource
-     */
+/**
+ * Contao Open Source CMS
+ * Copyright (C) 2005-2016 Leo Feyer
+ *
+ *
+ * PHP version 5
+ * @copyright  Martin Kozianka 2015-2016 <http://kozianka.de/>
+ * @author     Martin Kozianka <http://kozianka.de/>
+ * @package    image_slider
+ * @license    LGPL
+ * @filesource
+ */
 
 /**
  * Class ContentImageSlider
  *
  * Front end content element "ContentImageSlider".
- * @copyright  Martin Kozianka 2015
+ * @copyright  Martin Kozianka 2015-2016
  * @author     Martin Kozianka <martin@kozianka.de>
  * @package    image_slider
  */
-
 class ContentImageSlider extends \ContentGallery
 {
     private static $imgFullTag = "<img data-src=\"%s\" alt=\"%s\" title=\"%s\" %s>\n";

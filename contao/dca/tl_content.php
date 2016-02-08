@@ -2,9 +2,9 @@
 
 /**
  * Contao Open Source CMS
- * Copyright (C) 2005-2015 Leo Feyer
+ * Copyright (C) 2005-2016 Leo Feyer
  *
- * @copyright Martin Kozianka 2015 <http://kozianka.de/>
+ * @copyright Martin Kozianka 2015-2016 <http://kozianka.de/>
  * @author    Martin Kozianka <http://kozianka.de/>
  * @license   http://www.gnu.org/licenses/lgpl-3.0.html LGPL
  * @package   image_slider
